@@ -1,0 +1,5 @@
+[client]
+database=mysite
+user=anyson
+password=603714
+default-character-set = utf8
