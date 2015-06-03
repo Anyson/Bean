@@ -39,6 +39,7 @@ class School(models.Model):
     website = models.URLField(blank=True, verbose_name=u'学校网站')
     tel = models.CharField(max_length=30, blank=True, verbose_name=u'联系电话')
     major = models.ManyToManyField(Major, verbose_name=u'专业')
+    pic = models.ImageField(upload_to = UPLOAD_ROOT, blank=True, verbose_name=u'学校标志（校徽）')
     
     def __unicode__(self):
         return u'%s' % self.name

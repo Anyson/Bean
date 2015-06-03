@@ -1,0 +1,285 @@
+{% extends "base.html" %}
+
+{% block title %}Unify | Welcome...{% endblock %}
+
+{% block content %}
+<!--=== Content Part ===-->
+{% load staticfiles %}
+
+<!-- Purchase Block -->
+<div class="row-fluid purchase margin-bottom-30">
+    <div class="container">
+		<div class="span9">
+            <span>Unify is a clean and fully responsive incredible Template.</span>
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi  vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat.</p>
+        </div>
+    </div>
+</div><!--/row-fluid-->
+<!-- End Purchase Block -->
+<div class="container">		
+    <!-- Service Blocks -->
+    <div class="row-fluid servive-block">
+        <div class="span4">
+            <h4>Lorem sequat ipsum de</h4>
+            <p><i class="icon-bell"></i></p>
+            <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus, tellus ac cursus comodo egetine metuss gorp.</p>
+        </div>
+        <div class="span4">
+            <h4>Vivamus imperdiet gravi</h4>
+            <p><i class="icon-bullhorn"></i></p>
+            <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus, tellus ac cursus comodo egetine metuss gorp.</p>
+        </div>
+        <div class="span4">
+            <h4>Donec idslacs elit nomi</h4>
+            <p><i class="icon-lightbulb"></i></p>
+            <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus, tellus ac cursus comodo egetine metuss gorp.</p>
+        </div>
+    </div><!--/row-fluid-->
+    <!-- //End Service Blokcs -->
+	<!-- Recent Works -->
+    <div class="headline"><h3>学校</h3></div>
+    <div class="row-fluid margin-bottom-40">
+        <ul id="list" class="bxslider recent-work">
+        	{% for school in schools %}
+        		<li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{% static school.pic %}" alt="" /></em>
+                    <span>
+                        <strong>{{ school.name }}</strong>
+                        <i>{{ school.province}} {{ school.city }}</i>
+                    </span>
+                </a>
+            </li>
+        	{% endfor %}
+        	<!---
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{% static 'bean/assets/img/carousel/2.jpg' %}" alt="" /></em>
+                    <span>
+                        <strong>Happy New Year</strong>
+                        <i>Anim pariatur cliche reprehenderit</i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{% static 'bean/assets/img/carousel/9.jpg' %}" alt="" /></em>
+                    <span>
+                        <strong>Award Winning Agency</strong>
+                        <i>Responsive Bootstrap Template</i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{% static 'bean/assets/img/carousel/4.jpg' %}" alt="" /></em>
+                    <span>
+                        <strong>Wolf Moon Officia</strong>
+                        <i>Pariatur prehe cliche reprehrit</i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{% static 'bean/assets/img/carousel/5.jpg' %}" alt="" /></em>
+                    <span>
+                        <strong>Food Truck Quinoa Nesciunt</strong>
+                        <i>Craft labore wes anderson cred</i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{% static 'bean/assets/img/carousel/6.jpg' %}" alt="" /></em>
+                    <span>
+                        <strong>Happy New Year</strong>
+                        <i>Anim pariatur cliche reprehenderit</i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{% static 'bean/assets/img/carousel/7.jpg' %}" alt="" /></em>
+                    <span>
+                        <strong>Award Winning Agency</strong>
+                        <i>Responsive Bootstrap Template</i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{% static 'bean/assets/img/carousel/8.jpg' %}" alt="" /></em>
+                    <span>
+                        <strong>Wolf Moon Officia</strong>
+                        <i>Pariatur prehe cliche reprehrit</i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{% static 'bean/assets/img/carousel/9.jpg' %}" alt="" /></em>
+                    <span>
+                        <strong>Food Truck Quinoa Nesciunt</strong>
+                        <i>Craft labore wes anderson cred</i>
+                    </span>
+                </a>
+            </li>
+            -->
+        </ul>        
+	</div><!--/row-->
+	<!-- //End Recent Works -->
+
+	<!-- Accardion and Posts -->
+	<div class="row-fluid">
+    	<div class="span7">
+			<div class="headline"><h3>考研经验</h3></div>
+            <!-- Accardion -->
+			<div class="accordion acc-home" id="accordion2">
+				{% for article in articles %}
+					 <div class="accordion-group">
+                  		<div class="accordion-heading">
+                    		<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{ forloop.counter }}">
+                     			 {{ forloop.counter }}. {{ article.title }}
+                    		</a>
+                  		</div>
+                  		<div id="collapse{{ forloop.counter }}" {% if forloop.counter == 1 %} class="accordion-body in collapse"  style="height: auto;" {% else %} class="accordion-body collapse" style="height: 0px;" {% endif %}>
+                    		<div class="accordion-inner">
+                      			<p>{{ article.intro }}</p>
+                   			 </div>
+                  		</div>
+                	</div><!--/accordion-group-->
+				{% endfor %}
+            </div><!--/accardion-->
+        </div><!--/span7-->
+        
+        <!-- Posts -->
+        <div class="span5 posts">
+            <div class="posts">
+                <div class="headline"><h3>考研资料</h3></div>
+                {% for produce in produces %}
+                	<dl class="dl-horizontal">
+                    	<dt><a href="#"><img src="{% static produce.pic %}" alt="" /></a></dt>
+                    	<dd>
+                        	<p><a href="#">{{ produce.title }}</a></p> 
+                        	<p>{{ produce.intro }}</p>
+                    	</dd>
+                	</dl>
+                {% endfor %}
+            </div>
+        </div><!--/span5-->
+    </div><!--/row-fluid-->
+	<!-- //End Accardion and Posts-->
+
+    <!-- Our Clients -->
+    <div id="clients-flexslider" class="flexslider home clients">
+        <div class="headline"><h3>Our Clients</h3></div>    
+        <ul class="slides">
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/hp_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/hp.png' %}" class="color-img' %}" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/igneus_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/igneus.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/vadafone_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/vadafone.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/walmart_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/walmart.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/shell_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/shell.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/natural_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/natural.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/aztec_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/aztec.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/gamescast_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/gamescast.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/cisco_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/cisco.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/everyday_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/everyday.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/cocacola_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/cocacola.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/spinworkx_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/spinworkx.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/shell_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/shell.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/natural_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/natural.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/gamescast_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/gamescast.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/everyday_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/everyday.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'bean/assets/img/clients/spinworkx_grey.png' %}" alt="" /> 
+                    <img src="{% static 'bean/assets/img/clients/spinworkx.png' %}" class="color-img" alt="" />
+                </a>
+            </li>
+        </ul>
+    </div><!--/flexslider-->
+    <!-- //End Our Clients -->
+</div><!--/container-->		
+<!-- End Content Part -->
+
+{% endblock %}
