@@ -1,3 +1,4 @@
+{% load dajaxice_templatetags %}
 <!DOCTYPE html>
 <!--[if IE 7]> <html lang="en" class="ie7"> <![endif]-->  
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
@@ -13,22 +14,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
-    <!-- CSS Global Compulsory-->
-    <link rel="stylesheet" href="{% static 'bean/assets/plugins/bootstrap/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'bean/assets/css/style.css' %}" />
-    <link rel="stylesheet" href="{% static 'bean/assets/css/headers/header2.css' %}"" />
-    <link rel="stylesheet" href="{% static 'bean/assets/plugins/bootstrap/css/bootstrap-responsive.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'bean/assets/css/style_responsive.css' %}" />
-    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" />        
-    <!-- CSS Implementing Plugins -->    
-    <link rel="stylesheet" href="{% static 'bean/assets/plugins/font-awesome/css/font-awesome.css' %}" />
-    <link rel="stylesheet" href="{% static 'bean/assets/plugins/flexslider/flexslider.css' %}" type="text/css" media="screen" />      
-    <link rel="stylesheet" href="{% static 'bean/assets/plugins/parallax-slider/css/parallax-slider.css' %}" type="text/css" />
-    <link rel="stylesheet" href="{% static 'bean/assets/plugins/bxslider/jquery.bxslider.css' %}" />
-    <!-- CSS Theme -->    
-    <link rel="stylesheet" href="{% static 'bean/assets/css/themes/default.css' %}" id="style_color" />
-    <link rel="stylesheet" href="{% static 'bean/assets/css/themes/headers/default.css' %}" id="style_color-header-2" />    
+	<link rel="shortcut icon" href="{% static 'schools/favicon.ico' %}" />   
+	{% block link %}
+		<!-- CSS Global Compulsory-->
+    	<link rel="stylesheet" href="{% static 'schools/assets/plugins/bootstrap/css/bootstrap.min.css' %}" />
+    	<link rel="stylesheet" href="{% static 'schools/assets/css/style.css' %}" />
+    	<link rel="stylesheet" href="{% static 'schools/assets/css/headers/header2.css' %}"" />
+    	<link rel="stylesheet" href="{% static 'schools/assets/plugins/bootstrap/css/bootstrap-responsive.min.css' %}" />
+    	<link rel="stylesheet" href="{% static 'schools/assets/css/style_responsive.css' %}" />     
+    	<!-- CSS Implementing Plugins -->    
+    	<link rel="stylesheet" href="{% static 'schools/assets/plugins/font-awesome/css/font-awesome.css' %}" />
+    	<link rel="stylesheet" href="{% static 'schools/assets/plugins/flexslider/flexslider.css' %}" type="text/css" media="screen" />      
+    	<link rel="stylesheet" href="{% static 'schools/assets/plugins/parallax-slider/css/parallax-slider.css' %}" type="text/css" />
+    	<link rel="stylesheet" href="{% static 'schools/assets/plugins/bxslider/jquery.bxslider.css' %}" />
+    	<!-- CSS Theme -->    
+    	<link rel="stylesheet" href="{% static 'schools/assets/css/themes/default.css' %}" id="style_color" />
+    	<link rel="stylesheet" href="{% static 'schools/assets/css/themes/headers/default.css' %}" id="style_color-header-2" />
+	{% endblock %}
+ 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head> 
 
 <body>
@@ -37,7 +40,7 @@
     <div class="container"> 
         <!-- Logo -->       
         <div class="logo">                                             
-            <a href="index.html"><img id="logo-header" src="{% static 'bean/assets/img/logo2-default.png' %}" alt="Logo" /></a>
+            <a href="/"><img id="logo-header" src="{% static 'schools/assets/img/logo2-default.png' %}" alt="Logo" /></a>
         </div><!-- /logo -->        
                                     
         <!-- Menu -->       
@@ -51,7 +54,7 @@
                 <div class="nav-collapse collapse">                                     
                     <ul class="nav">
                         <li class="active">
-                            <a href="index.html">首页
+                            <a href="/">首页
                                 <b class="caret"></b>                            
                             </a>
                             <b class="caret-out"></b>                        
@@ -62,7 +65,7 @@
                             </a>
                             <ul class="dropdown-menu">
                             	{% for school in schools %}
-                            		<li><a href="#">{{ school.name }}</a></li>
+                            		<li><a href="/school/?sid={{ school.id }}">{{ school.name }}</a></li>
                             	{% endfor %}
                             </ul>
                             <b class="caret-out"></b>                        
@@ -121,19 +124,19 @@
                 <div class="posts">
                     <div class="headline"><h3>Recent Blog Entries</h3></div>
                     <dl class="dl-horizontal">
-                        <dt><a href="#"><img src="{% static 'bean/assets/img/sliders/elastislide/6.jpg' %}" alt="" /></a></dt>
+                        <dt><a href="#"><img src="{% static 'schools/assets/img/sliders/elastislide/6.jpg' %}" alt="" /></a></dt>
                         <dd>
                             <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
                         </dd>
                     </dl>
                     <dl class="dl-horizontal">
-                    <dt><a href="#"><img src="{% static 'bean/assets/img/sliders/elastislide/10.jpg' %}" alt="" /></a></dt>
+                    <dt><a href="#"><img src="{% static 'schools/assets/img/sliders/elastislide/10.jpg' %}" alt="" /></a></dt>
                         <dd>
                             <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
                         </dd>
                     </dl>
                     <dl class="dl-horizontal">
-                    <dt><a href="#"><img src="{% static 'bean/assets/img/sliders/elastislide/11.jpg' %}" alt="" /></a></dt>
+                    <dt><a href="#"><img src="{% static 'schools/assets/img/sliders/elastislide/11.jpg' %}" alt="" /></a></dt>
                         <dd>
                             <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
                         </dd>
@@ -177,36 +180,41 @@
 	            <p>Copyright &copy; 2014.TCake All rights reserved.</p>
 			</div>
 			<div class="span4">	
-                <a href="index.html"><img id="logo-footer" src="{% static 'bean/assets/img/logo2-default.png' %}" class="pull-right" alt="" /></a>
+                <a href="index.html"><img id="logo-footer" src="{% static 'schools/assets/img/logo2-default.png' %}" class="pull-right" alt="" /></a>
 			</div>
 		</div><!--/row-fluid-->
 	</div><!--/container-->	
 </div><!--/copyright-->	
 <!--=== End Copyright ===-->
 
-<!-- JS Global Compulsory -->           
-<script type="text/javascript" src="{% static 'bean/assets/js/jquery-1.8.2.min.js'%} "></script>
-<script type="text/javascript" src="{% static 'bean/assets/js/modernizr.custom.js' %}"></script>        
-<script type="text/javascript" src="{% static 'bean/assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script> 
-<!-- JS Implementing Plugins -->           
-<script type="text/javascript" src="{% static 'bean/assets/plugins/flexslider/jquery.flexslider-min.js' %}"></script>
-<script type="text/javascript" src="{% static 'bean/assets/plugins/parallax-slider/js/modernizr.js' %}"></script>
-<script type="text/javascript" src="{% static 'bean/assets/plugins/parallax-slider/js/jquery.cslider.js' %}"></script> 
-<script type="text/javascript" src="{% static 'bean/assets/plugins/bxslider/jquery.bxslider.js' %}"></script>
-<script type="text/javascript" src="{% static 'bean/assets/plugins/back-to-top.js' %}"></script>
-<!-- JS Page Level -->           
-<script type="text/javascript" src="{% static 'bean/assets/js/app.js' %}"></script>
-<script type="text/javascript" src="{% static 'bean/assets/js/pages/index.js' %}"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        App.init();
-        App.initSliders();
-        App.initBxSlider1();
-        Index.initParallaxSlider();
-    });
-</script>
+{% dajaxice_js_import 'nocsrf' %}
+<script type="text/javascript" src="{% static '/static/dajax/jquery.dajax.core.js' %}"></script>
+{% block load_js_script %}
+	<!-- JS Global Compulsory -->           
+	<script type="text/javascript" src="{% static 'schools/assets/js/jquery-1.8.2.min.js'%} "></script>
+	<script type="text/javascript" src="{% static 'schools/assets/js/modernizr.custom.js' %}"></script>        
+	<script type="text/javascript" src="{% static 'schools/assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script> 
+	<!-- JS Implementing Plugins -->           
+	<script type="text/javascript" src="{% static 'schools/assets/plugins/flexslider/jquery.flexslider-min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'schools/assets/plugins/parallax-slider/js/modernizr.js' %}"></script>
+	<script type="text/javascript" src="{% static 'schools/assets/plugins/parallax-slider/js/jquery.cslider.js' %}"></script> 
+	<script type="text/javascript" src="{% static 'schools/assets/plugins/bxslider/jquery.bxslider.js' %}"></script>
+	<script type="text/javascript" src="{% static 'schools/assets/plugins/back-to-top.js' %}"></script>
+	<!-- JS Page Level -->           
+	<script type="text/javascript" src="{% static 'schools/assets/js/app.js' %}"></script>
+	<script type="text/javascript" src="{% static 'schools/assets/js/pages/index.js' %}"></script>
+	<script type="text/javascript">
+    	jQuery(document).ready(function() {
+        	App.init();
+        	App.initSliders();
+        	App.initBxSlider1();
+        	Index.initParallaxSlider();
+    	});
+	</script>
+{% endblock %}
+
 <!--[if lt IE 9]>
-    <script src="{% static 'bean/assets/js/respond.js' %}"></script>
+    <script src="{% static 'schools/assets/js/respond.js' %}"></script>
 <![endif]-->
 <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>

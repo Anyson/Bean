@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}Unify | Welcome...{% endblock %}
+
+{% load staticfiles %}
+{% block link %}
+	<!-- CSS Global Compulsory-->
+    <link rel="stylesheet" href="{% static 'schools/assets/plugins/bootstrap/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'schools/assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'schools/assets/css/headers/header2.css' %}" />
+    <link rel="stylesheet" href="{% static 'schools/assets/plugins/bootstrap/css/bootstrap-responsive.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'schools/assets/css/style_responsive.css' %}" />
+    <!-- CSS Implementing Plugins -->    
+    <link rel="stylesheet" href="{% static 'schools/assets/plugins/font-awesome/css/font-awesome.css' %}" />
+    <link rel="stylesheet" href="{% static 'schools/assets/plugins/portfolioSorting/css/sorting.css' %}" />    
+    <!-- CSS Theme -->    
+    <link rel="stylesheet" href="{% static 'schools/assets/css/themes/default.css' %}" id="style_color" />
+    <link rel="stylesheet" href="{% static 'schools/assets/css/themes/headers/default.css' %}" id="style_color-header-1' %}" />   
+{% endblock %}
+
+{% block content %}
+<!--=== Content Part ===-->
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-40">
+	<div class="container">
+        <h1 class="color-green pull-left">{{ q_school.name }}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">学校:{{ q_school.name }}</li>
+            <input name="school" type="hidden" id="school" value="{{ q_school.id }}" />
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container"> 	
+	<div class="row-fluid"> 
+        <div id="w">    
+            <div class="sort" id="sort">
+				<ul class="unstyled inline">
+                	<li><a href="#" class="all selected" value="-1">所有专业</a></li>
+                	{% for major in q_school.major.all %}
+                		<li><a href="#" class="major_{{ major.id }}" value="{{ major.id }}">{{ major.name }}</a></li>
+                	{% endfor %}
+                </ul>
+            </div>
+        </div>                
+    </div><!--/row-fluid-->    
+    
+    <div class="row-fluid blog-page">    
+        <!-- Left Sidebar -->
+    	<div class="span9" id="show_articles">
+    		{% include "list_article_intro.html" %}
+        </div><!--/span9-->
+
+        <!-- Right Sidebar -->
+    	<div class="span3">
+        	<!-- Search Bar -->
+        	<div class="headline"><h3>Search Bar</h3></div>
+            <div class="input-append  margin-bottom-20">
+                <input type="text" class="span9" />
+                <button type="button" class="btn-u">Search</button>
+            </div>
+
+            <!-- Posts -->
+            <div class="posts margin-bottom-20">
+                <div class="headline"><h3>Recent Blog Entries</h3></div>
+                <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="{% static 'schools/assets/img/sliders/elastislide/6.jpg' %}" alt="" /></a></dt>
+                    <dd>
+                        <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
+                    </dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="{% static 'schools/assets/img/sliders/elastislide/10.jpg' %}" alt="" /></a></dt>
+                    <dd>
+                        <p><a href="#">Lorem sequat ipsum dolor lorem sunt aliqua put a bird sit amet consectetur.</a></p> 
+                    </dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="{% static 'schools/assets/img/sliders/elastislide/11.jpg' %}" alt="" /></a></dt>
+                    <dd>
+                        <p><a href="#">It works on all major web browsers, tablets and aliqua lorem sequat ipsum.</a></p> 
+                    </dd>
+                </dl>
+            </div><!--/posts-->
+
+        	<!-- Tabs Widget -->
+        	<div class="headline"><h3>Tabs Widget</h3></div>
+            <ul class="nav nav-tabs tabs">
+                <li class="active"><a href="#home" data-toggle="tab">First Tab</a></li>
+                <li><a href="#profile" data-toggle="tab">Second Tab</a></li>
+            </ul><!--/tabs-->
+            
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                    <p>Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Pellentesque fermentum, Vivamus  felis consectetur eget orci metus.</p>
+                </div>
+                <div class="tab-pane" id="profile">
+                    <p>Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac adipiscing nunc.</p>
+                </div>
+            </div><!--/tab-content-->
+        </div><!--/span3-->
+    </div><!--/row-fluid-->    
+</div><!--/container-->	 	
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block load_js_script %}
+	<!-- JS Global Compulsory -->           
+	<script type="text/javascript" src="{% static 'schools/assets/js/jquery-1.8.2.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'schools/assets/js/modernizr.custom.js' %}"></script>        
+	<script type="text/javascript" src="{% static 'schools/assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script> 
+	<!-- JS Implementing Plugins -->           
+	<script type="text/javascript" src="{% static 'schools/assets/plugins/portfolioSorting/js/jquery.quicksand.js' %}"></script>
+	<script type="text/javascript" src="{% static 'schools/assets/plugins/portfolioSorting/js/sorting.js' %}"></script>
+	<script type="text/javascript" src="{% static 'schools/assets/plugins/back-to-top.js' %}"></script>
+	<!-- JS Page Level -->           
+	<script type="text/javascript" src="{% static 'schools/assets/js/app.js' %}"></script>
+	<script type="text/javascript">
+    	jQuery(document).ready(function() {
+        	App.init();
+    	});
+	</script>
+</script>
+{% endblock %}

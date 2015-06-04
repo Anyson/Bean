@@ -1,0 +1,38 @@
+{% load staticfiles %}
+{% for article in articles %}
+    <div class="blog margin-bottom-30">
+    	<h3>{{ article.title }}</h3>
+        <ul class="unstyled inline blog-info">
+        	<li><i class="icon-calendar"></i> {{ arcticle.date }}</li>
+            <li><i class="icon-pencil"></i> {{ arcticle.author }}</li>
+            <!--<li><i class="icon-comments"></i> <a href="#">24 Comments</a></li>-->
+        </ul>
+        <ul class="unstyled inline blog-tags">
+            <li>
+            	<i class="icon-tags"></i> 
+            	<a href="#">{{ article.school.name }}</a> 
+            	<a href="#">{{ article.major.name  }}</a>
+            </li>
+        </ul>
+        {% if article.pic %}
+            <div class="blog-img"><img src="{% static article.pic %}" alt="" /></div>
+        {% endif %}
+        <p>{{ article.intro }}...</p>
+        <p><a class="btn-u btn-u-small" href="#">查看更多</a></p>
+    </div><!--/blog-->
+{% endfor %}
+
+<div class="pagination pagination-centered">
+	<ul>
+        <li class="disabled"><a href="#">Prev</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li class="active"><a>3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">6</a></li>
+        <li><a href="#">7</a></li>
+        <li><a href="#">8</a></li>
+        <li><a href="#">Next</a></li>
+     </ul>
+</div>
