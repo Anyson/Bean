@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^index.html$', 'schools.views.home', name='home'),
     url(r'^index/$', 'schools.views.home', name='home'),
     url(r'^school/$', 'schools.views.show_school', name='school'),
+    url(r'^article/$', 'schools.views.show_article', name='article'),
     # url(r'^blog/', include('blog.urls')),
     
     url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),

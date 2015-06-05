@@ -30,22 +30,39 @@ def show_school(request, name = 'school'):
                 error = True
             else:
                 q_school = q_school[0]
-                print q_school.major.all()
                 q_major  = ''
                 articles = Article.objects.filter(school=q_school)
-                if 'mid' in request.GET:
-                    mid = request.GET['mid']
-                    if mid:
-                        q_major = Major.objects.filter(id=mid)
-                        if not q_major:
-                            articles = Article.objects.filter(school=q_school, major=q_major)  
+                counter = len(articles)
+                page_list = []
+                if counter :
+                    total_page = (counter / 10) if (counter % 10 == 0) else (counter / 10 + 1)
+                    articles = articles[0:10]
+                    page_list = range(1, total_page + 1)
                 return render_to_response('display_items.html',
                                           _get_content({'q_school'      : q_school, 
                                                         'q_major'       : q_major,
                                                         'articles'      : articles,
+                                                        'current_page'  : 1 , 
+                                                        'page_list'     : page_list,
                                                         'error'         : error}))
     return render_to_response('404.html', _get_content({'error' : error,}))
 
 
-
+def show_article(request, name="article"):
+    error = False
+    if 'aid' in request.GET:
+        aid = request.GET['aid']
+        if not aid:
+            error = True
+        else:
+            q_article = Article.objects.filter(id=aid)
+            if not q_article :
+                error = True
+            else:
+                q_article = q_article[0]
+                return render_to_response('display_detail_item.html',
+                                          _get_content({'article'       : q_article,
+                                                        'error'         : error}))
+                
+    return render_to_response('404.html', _get_content({'error' : error,}))
 

@@ -2,5 +2,6 @@ eclipse.preferences.version=1
 encoding//bean/settings.py=utf-8
 encoding//bean/urls.py=utf-8
 encoding//schools/admin.py=utf-8
+encoding//schools/ajax.py=utf-8
 encoding//schools/models.py=utf-8
 encoding//schools/views.py=utf-8
