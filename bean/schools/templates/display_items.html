@@ -39,9 +39,9 @@
         <div id="w">    
             <div class="sort" id="sort">
 				<ul class="unstyled inline">
-                	<li><a href="#" class="all selected" value="-1">所有专业</a></li>
+                	<li><a href="#" class="all {% ifequal q_major '' %} selected {% endifequal %}" value="-1">所有专业</a></li>
                 	{% for major in q_school.major.all %}
-                		<li><a href="#" class="major_{{ major.id }}" value="{{ major.id }}">{{ major.name }}</a></li>
+                		<li><a href="#" class="major_{{ major.id }} {% ifequal major.id q_major.id %} selected {% endifequal %}" value="{{ major.id }}">{{ major.name }}</a></li>
                 	{% endfor %}
                 </ul>
             </div>

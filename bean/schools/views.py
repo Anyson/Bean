@@ -3,6 +3,7 @@
 from django.shortcuts import render_to_response
 from django.http import  HttpResponse, Http404, HttpResponseRedirect
 from schools.models import Major, School, Article
+from django.utils import html
 
 def _get_content(content_dict={}):
     schools = School.objects.all()
@@ -32,6 +33,15 @@ def show_school(request, name = 'school'):
                 q_school = q_school[0]
                 q_major  = ''
                 articles = Article.objects.filter(school=q_school)
+                if 'mid' in request.GET:
+                    mid = request.GET['mid']
+                    if mid:
+                        q_major = Major.objects.filter(id=mid)
+                        if q_major:
+                            q_major = q_major[0]
+                            articles = Article.objects.filter(school=q_school, major=q_major)
+                        else :
+                            q_major= ''
                 counter = len(articles)
                 page_list = []
                 if counter :
@@ -60,6 +70,7 @@ def show_article(request, name="article"):
                 error = True
             else:
                 q_article = q_article[0]
+                q_article.content = html.format_html(q_article.content)
                 return render_to_response('display_detail_item.html',
                                           _get_content({'article'       : q_article,
                                                         'error'         : error}))

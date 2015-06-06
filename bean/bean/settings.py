@@ -16,7 +16,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 #template dir
-#TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates').replace('\\','/'),)
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates').replace('\\','/'),)
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
