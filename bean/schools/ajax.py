@@ -6,7 +6,6 @@ from django.template.loader import render_to_string
 
 @dajaxice_register
 def get_articles(request, sid = None, mid = None, page=0):
-    print 'sid:', sid, '; mid:', mid, '; page:', page 
     dajax = Dajax()
     if not sid or not mid :
         return dajax.json()
@@ -53,4 +52,40 @@ def get_articles(request, sid = None, mid = None, page=0):
                                                            'page_list'    : page_list})
     dajax.assign('#show_articles', 'innerHTML', render)
     dajax.assign('#q_major', 'value', mid)
+    if page > 0:
+        dajax.script('$("body,html").animate({scrollTop:$("#show_articles").offset().top});')#跳转到锚点
+    return dajax.json()
+
+@dajaxice_register
+def get_search_articles(request, q_search=None, page=0):
+    dajax = Dajax()
+    if not q_search :
+        return dajax.json()
+    articles = Article.objects.filter(title__icontains=q_search).order_by('date').reverse()
+    counter = len(articles)
+    if counter <= 0:
+        return dajax.json()
+    
+    page_list = []
+    if counter :
+        total_page = (counter / 10) if (counter % 10 == 0) else (counter / 10 + 1)
+        if page >= total_page:
+            return dajax.json()
+        elif page < 0:
+            page = 0
+        start = page * 10
+        end = start + 10
+        if end > counter:
+            end = counter
+        articles = articles[start:end]
+        
+        page_list = range(1, total_page + 1)
+        
+    render = render_to_string('list_search_result.html', { 'articles'     : articles, 
+                                                           'current_page' : page + 1, 
+                                                           'page_list'    : page_list})
+    dajax.assign('#show_articles', 'innerHTML', render)
+    dajax.assign('#q_search', 'value', q_search)
+    if page > 0:
+        dajax.script('$("body,html").animate({scrollTop:$("#show_articles").offset().top});')#跳转到锚点
     return dajax.json()

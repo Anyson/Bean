@@ -53,6 +53,15 @@ var App = function () {
             }   
         }); 
     }
+    
+    function handledDropdown(){
+    	alert("aaa");
+    	$("#school_menu").hover(function(){
+    		$('#school_menu').dropdown('toggle')
+		},function(){
+			$('#school_menu').dropdown('toggle')
+		});
+    }
 
     function handleSwitcher() {    
         var panel = $('.style-switcher');

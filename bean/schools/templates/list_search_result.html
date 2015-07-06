@@ -1,5 +1,5 @@
 {% load staticfiles %}
-<input name="major" type="hidden" id="q_major" value="-1" />
+<input name="search" type="hidden" id="q_search" value="{{ q_search }}" />
 {% for article in articles %}
     <div class="blog margin-bottom-30">
     	<h3>{{ article.title }}</h3>
@@ -28,8 +28,7 @@
     </div><!--/blog-->
  {% empty %}
  	<div class="blog margin-bottom-30">
- 		<h3>该专业暂无提供任何内容</h3>
- 		<p>我们会尽快更新并添加的，望见谅！</p>
+ 		<p>暂无结果</p>
  	</div><!--/blog-->
 {% endfor %}
 
@@ -38,11 +37,11 @@
 	<ul>
         {% for page in page_list %}
         	{% if forloop.first %} 
-        		<li {% ifequal page current_page %} class="disabled"{% endifequal %}><a href="javascript:void(0);" onclick="paginationOnClick(this.id);" id="pre">上一页</a></li>
+        		<li {% ifequal page current_page %} class="disabled"{% endifequal %}><a href="javascript:void(0);" onclick="searchPaginationOnClick(this.id);" id="pre">上一页</a></li>
         	{% endif %}
-        	<li {% ifequal page current_page %} class="active" {% endifequal %}><a href="javascript:void(0);" onclick="paginationOnClick(this.id);" id={{ page }}>{{ page }}</a></li>
+        	<li {% ifequal page current_page %} class="active" {% endifequal %}><a href="javascript:void(0);" onclick="searchPaginationOnClick(this.id);" id={{ page }}>{{ page }}</a></li>
         	{% if forloop.last %} 
-        		<li {% ifequal page current_page %} class="disabled"{% endifequal %}><a href="javascript:void(0);" onclick="paginationOnClick(this.id);" id="next">下一页</a></li>
+        		<li {% ifequal page current_page %} class="disabled"{% endifequal %}><a href="javascript:void(0);" onclick="searchPaginationOnClick(this.id);" id="next">下一页</a></li>
         	{% endif %}
         {% endfor %}
         <input name="major" type="hidden" id="current_page" value="{{ current_page }}" />

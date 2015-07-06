@@ -6,7 +6,7 @@ from django.db import models
 # from bean.settings import MEDIA_ROOT
 # from django.db.models.fields.files import ImageFieldFile
 
-UPLOAD_ROOT = 'upload'
+UPLOAD_ROOT = 'uploadImg'
 
 # def make_thumb(path, size = 480):
 #     pixbuf = Image.open(path)
@@ -40,6 +40,7 @@ class School(models.Model):
     tel = models.CharField(max_length=30, blank=True, verbose_name=u'联系电话')
     major = models.ManyToManyField(Major, verbose_name=u'专业')
     pic = models.ImageField(upload_to = UPLOAD_ROOT, blank=True, verbose_name=u'学校标志（校徽）')
+    date = models.DateTimeField(auto_now_add = True)
     
     def __unicode__(self):
         return u'%s' % self.name
@@ -54,9 +55,12 @@ class Article(models.Model):
     content = models.TextField(verbose_name=u'正文')
     author = models.CharField(max_length=30, blank=True, verbose_name=u'作者')
     pic = models.ImageField(upload_to = UPLOAD_ROOT, blank=True, verbose_name=u'资料图片')
+    read_times = models.IntegerField(blank=True, verbose_name=u'阅读人数')
     #pic_thumb = models.ImageField(upload_to = THUMB_ROOT, blank = True)
+    
     link = models.URLField(blank=True, verbose_name=u'淘宝链接')
     date = models.DateTimeField(auto_now_add = True, verbose_name=u'发表日期')
+    sales = models.IntegerField(blank=True, verbose_name=u'销量')
     
     school = models.ForeignKey(School, verbose_name=u'学校')
     major = models.ForeignKey(Major, verbose_name=u'专业')

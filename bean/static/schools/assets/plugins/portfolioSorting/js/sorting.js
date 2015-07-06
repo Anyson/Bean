@@ -35,6 +35,22 @@ function paginationOnClick(p) {
 	return false;
 }
 
+function searchPaginationOnClick(p) {
+	var page = p;
+  	var current_page = $("#current_page").val();
+  	if (page == "pre") {
+  		page = new Number(current_page);
+  		page = page - 1;
+  	} else if (page == "next") {
+  		page = new Number(current_page);
+  		page = page + 1;
+  	}
+  	page = page - 1;
+  	Dajaxice.schools.get_search_articles(Dajax.process, {'q_search':$('#q_search').val(), 'page' : page});
+  	
+	return false;
+}
+
 function my_callback(data){
 	Dajax.process(data);
 }

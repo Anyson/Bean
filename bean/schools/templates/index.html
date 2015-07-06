@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-{% block title %}Unify | Welcome...{% endblock %}
-
 {% block content %}
 <!--=== Content Part ===-->
 {% load staticfiles %}
@@ -10,9 +8,12 @@
 <div class="row-fluid purchase margin-bottom-30">
     <div class="container">
 		<div class="span9">
-            <span>Unify is a clean and fully responsive incredible Template.</span>
-            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi  vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat.</p>
+            <span>金榜考研，助你圆梦</span>
+            <p>2016考研烽烟再起，当竞争对手还在系鞋带，你应该先跑，金榜考研将助你一臂之力！</p>
+            <p>最后的战斗 考研资讯 考研经验 专业课内部课件 核心纲要 高分笔记 导师题库 复试押题 复试辅导 高分突破必备！</p>
+            <p>选择金榜考研的理由:</p>
         </div>
+        <a href="http://kknet.taobao.com/shop/view_shop.htm?spm=a1z0k.7386009.1997989141.d4915209.q949pU&shop_id=69324846"  target="_blank" class="btn-buy hover-effect">进入淘宝店铺</a>
     </div>
 </div><!--/row-fluid-->
 <!-- End Purchase Block -->
@@ -20,19 +21,19 @@
     <!-- Service Blocks -->
     <div class="row-fluid servive-block">
         <div class="span4">
-            <h4>Lorem sequat ipsum de</h4>
-            <p><i class="icon-bell"></i></p>
-            <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus, tellus ac cursus comodo egetine metuss gorp.</p>
+            <h4>真假优势</h4>
+            <p><i class="icon-info-sign"></i></p>
+            <p>金榜考研提供的考研专业课资料都是由2015年考上研究生编写、整理而成的最新考研资料。现在网上买资料的很多，而且很大一部分资料都是假的，而金榜考研提供的考研专业课资料均为刚考上的研究生所编写并且提供售后服务，真实度如何相信大家自己可以辨别。</p>
         </div>
         <div class="span4">
-            <h4>Vivamus imperdiet gravi</h4>
-            <p><i class="icon-bullhorn"></i></p>
-            <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus, tellus ac cursus comodo egetine metuss gorp.</p>
-        </div>
-        <div class="span4">
-            <h4>Donec idslacs elit nomi</h4>
+            <h4>价格优势</h4>
             <p><i class="icon-lightbulb"></i></p>
-            <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus, tellus ac cursus comodo egetine metuss gorp.</p>
+            <p>金榜考研都是考研过来人，也知道大家的目的只有一个：考上研究生。专业课资料好，可以给你节省下相当的时间复习公共课，这个价格肯定对的起我们的资料和售后。</p>
+        </div>
+        <div class="span4">
+            <h4>竞争优势</h4>
+            <p><i class="icon-bell"></i></p>
+            <p>专业课在考研中分数比例很大，是考研成败的关键，如果他人拥有这个资料和服务，而你没有，在水平相当的情况下，拥有此份资料和服务的考生获胜的几率肯定大。</p>
         </div>
     </div><!--/row-fluid-->
     <!-- //End Service Blokcs -->
@@ -42,7 +43,7 @@
         <ul id="list" class="bxslider recent-work">
         	{% for school in schools %}
         		<li>
-                <a href="#">
+                <a href="/school/?sid={{ school.id }}">
                 	<em class="overflow-hidden"><img src="{% static school.pic %}" alt="" /></em>
                     <span>
                         <strong>{{ school.name }}</strong>
@@ -144,7 +145,7 @@
                   		</div>
                   		<div id="collapse{{ forloop.counter }}" {% if forloop.counter == 1 %} class="accordion-body in collapse"  style="height: auto;" {% else %} class="accordion-body collapse" style="height: 0px;" {% endif %}>
                     		<div class="accordion-inner">
-                      			<p>{{ article.intro }}</p>
+                      			<p><a href="/article?aid={{ article.id }}">{{ article.intro }}...</a></p>
                    			 </div>
                   		</div>
                 	</div><!--/accordion-group-->
@@ -158,10 +159,10 @@
                 <div class="headline"><h3>考研资料</h3></div>
                 {% for produce in produces %}
                 	<dl class="dl-horizontal">
-                    	<dt><a href="#"><img src="{% static produce.pic %}" alt="" /></a></dt>
+                    	<dt><a href="/article?aid={{ produce.id }}"><img src="{% static produce.pic %}" alt="" /></a></dt>
                     	<dd>
-                        	<p><a href="#">{{ produce.title }}</a></p> 
-                        	<p>{{ produce.intro }}</p>
+                        	<p><a href="/article?aid={{ produce.id }}">{{ produce.title }}</a></p> 
+                        	<p><a href="/article?aid={{ produce.id }}">{{ produce.intro }}...</a></p>
                     	</dd>
                 	</dl>
                 {% endfor %}
@@ -169,116 +170,6 @@
         </div><!--/span5-->
     </div><!--/row-fluid-->
 	<!-- //End Accardion and Posts-->
-
-    <!-- Our Clients -->
-    <div id="clients-flexslider" class="flexslider home clients">
-        <div class="headline"><h3>Our Clients</h3></div>    
-        <ul class="slides">
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/hp_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/hp.png' %}" class="color-img' %}" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/igneus_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/igneus.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/vadafone_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/vadafone.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/walmart_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/walmart.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/shell_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/shell.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/natural_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/natural.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/aztec_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/aztec.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/gamescast_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/gamescast.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/cisco_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/cisco.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/everyday_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/everyday.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/cocacola_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/cocacola.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/spinworkx_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/spinworkx.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/shell_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/shell.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/natural_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/natural.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/gamescast_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/gamescast.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/everyday_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/everyday.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{% static 'schools/assets/img/clients/spinworkx_grey.png' %}" alt="" /> 
-                    <img src="{% static 'schools/assets/img/clients/spinworkx.png' %}" class="color-img" alt="" />
-                </a>
-            </li>
-        </ul>
-    </div><!--/flexslider-->
-    <!-- //End Our Clients -->
 </div><!--/container-->		
 <!-- End Content Part -->
 

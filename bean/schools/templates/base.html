@@ -7,14 +7,15 @@
 
 {% load staticfiles %}
 <head>
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}金榜考研 | 欢迎您...{% endblock %}</title>
 
     <!-- Meta -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-	<link rel="shortcut icon" href="{% static 'schools/favicon.ico' %}" />   
+    <meta name="baidu_union_verify" content="437d53c560d6a2e2f24340c17e0c7e7a">
+	<link rel="shortcut icon" href="{% static 'schools/favicon.png' %}" />   
 	{% block link %}
 		<!-- CSS Global Compulsory-->
     	<link rel="stylesheet" href="{% static 'schools/assets/plugins/bootstrap/css/bootstrap.min.css' %}" />
@@ -54,13 +55,11 @@
                 <div class="nav-collapse collapse">                                     
                     <ul class="nav">
                         <li class="active">
-                            <a href="/">首页
-                                <b class="caret"></b>                            
-                            </a>
-                            <b class="caret-out"></b>                        
+                            <a href="/">首页                          
+                            </a>                       
                         </li>
                         <li>
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown">学校
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" id="school_menu">学校
                                 <b class="caret"></b>                            
                             </a>
                             <ul class="dropdown-menu">
@@ -87,9 +86,9 @@
                     </ul>
                     <div class="search-open search-open-inner">
                         <div class="input-append">
-                            <form />
-                                <input type="text" class="span3" placeholder="Search" />
-                                <button type="submit" class="btn-u">Search</button>
+                            <form action="/search"  method="get" />
+                                <input name="q" type="text" class="span3" placeholder="请输入你要搜索的内容" />
+                                <button type="submit" class="btn-u">搜索</button>
                             </form>
                         </div>
                     </div>
@@ -108,39 +107,30 @@
 		<div class="row-fluid">
 			<div class="span4">
                 <!-- About -->
-		        <div class="headline"><h3>About</h3></div>	
-				<p class="margin-bottom-25">Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals.</p>	
-
-	            <!-- Monthly Newsletter -->
-		        <div class="headline"><h3>Monthly Newsletter</h3></div>	
-				<p>Subscribe to our newsletter and stay up to date with the latest news and deals!</p>
-				<form class="form-inline" />
-					<div class="input-append">
-						<input type="text" placeholder="Email Address" class="input-medium" />
-						<button class="btn-u">Subscribe</button>
-					</div>
-				</form>							
+		        <div class="headline"><h3>关于我们</h3></div>	
+				<p class="margin-bottom-25">金榜考研专营主专业课真题，解析，笔记和售后服务，详情请进入<a href="http://kknet.taobao.com/shop/view_shop.htm?spm=a1z0k.7386009.1997989141.d4915209.q949pU&shop_id=69324846"  target="_blank">淘宝店铺</a>查看</p>	
+						
 			</div><!--/span4-->	
 			
 			<div class="span4">
                 <div class="posts">
-                    <div class="headline"><h3>Recent Blog Entries</h3></div>
+                    <div class="headline"><h3>最新考研资料</h3></div>
                     <dl class="dl-horizontal">
-                        <dt><a href="#"><img src="{% static 'schools/assets/img/sliders/elastislide/6.jpg' %}" alt="" /></a></dt>
+                        <dt><a href="http://item.taobao.com/item.htm?spm=a1z10.1-c.w4004-2292841072.9.IkPVbW&id=45677079833" target="_blank"><img src="http://gd1.alicdn.com/bao/uploaded/i1/TB1658HIXXXXXc1XpXXXXXXXXXX_!!0-item_pic.jpg_50x50.jpg" /></a></dt>
                         <dd>
-                            <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
+                            <p><a href="http://item.taobao.com/item.htm?spm=a1z10.1-c.w4004-2292841072.9.IkPVbW&id=45677079833" target="_blank">2016武汉大学数学专业高代数学分析考研真题答案金榜考研资料</a></p> 
                         </dd>
                     </dl>
                     <dl class="dl-horizontal">
-                    <dt><a href="#"><img src="{% static 'schools/assets/img/sliders/elastislide/10.jpg' %}" alt="" /></a></dt>
+                    <dt><a href="http://item.taobao.com/item.htm?spm=a1z10.1-c.w4004-2292841072.11.1K88Qc&id=45677563148" target="_blank"><img src="http://gd4.alicdn.com/bao/uploaded/i4/TB1nGNFIXXXXXXNXFXXXXXXXXXX_!!0-item_pic.jpg_50x50.jpg" /></a></dt>
                         <dd>
-                            <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
+                            <p><a href="http://item.taobao.com/item.htm?spm=a1z10.1-c.w4004-2292841072.11.1K88Qc&id=45677563148" target="_blank">2016中山大学数学专业高代数学分析考研真题答案金榜考研资料</a></p> 
                         </dd>
                     </dl>
                     <dl class="dl-horizontal">
-                    <dt><a href="#"><img src="{% static 'schools/assets/img/sliders/elastislide/11.jpg' %}" alt="" /></a></dt>
+                    <dt><a href="http://item.taobao.com/item.htm?spm=a1z10.1-c.w4004-2292841072.5.1K88Qc&id=44164122190" target="_blank"><img src="http://gd1.alicdn.com/bao/uploaded/http://gtu-c01.m.alicdn.com/1/1/538334725/14725028347661704/T2AOBtXrXaXXXXXXXX_!!538334725.jpg_50x50.jpg" /></a></dt>
                         <dd>
-                            <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
+                            <p><a href="http://item.taobao.com/item.htm?spm=a1z10.1-c.w4004-2292841072.5.1K88Qc&id=44164122190" target="_blank">2016深圳大学计算机数据结构与算法考研初试资料考考网书籍教材</a></p> 
                         </dd>
                     </dl>
                 </div>
@@ -148,26 +138,16 @@
 
 			<div class="span4">
 	            <!-- Monthly Newsletter -->
-		        <div class="headline"><h3>Contact Us</h3></div>	
+		        <div class="headline"><h3>联系我们</h3></div>	
                 <address>
-					25, Lorem Lis Street, Orange <br />
-					California, US <br />
-					Phone: 800 123 3456 <br />
-					Fax: 800 123 3456 <br />
-					Email: <a href="mailto:info@anybiz.com" class="">info@anybiz.com</a>
+					深圳大学经济学QQ群: 364349589 <br />
+					深圳大学新闻传播QQ群: 467542968 <br />
+					深圳大学建筑学QQ群: 375780567 <br />
+					深圳大学计算机与软件学院QQ群: 246136725 <br />
+					官方QQ: 1027509234 <br />
+					淘宝店铺: <a href="http://kknet.taobao.com/shop/view_shop.htm?spm=a1z0k.7386009.1997989141.d4915209.q949pU&shop_id=69324846"  target="_blank">进入</a><br />
+					Email: <a href="mailto:tcake@tcake.me" class="">tcake@tcake.me</a>
                 </address>
-
-                <!-- Stay Connected -->
-		        <div class="headline"><h3>Stay Connected</h3></div>	
-                <ul class="social-icons">
-                    <li><a href="#" data-original-title="Feed" class="social_rss"></a></li>
-                    <li><a href="#" data-original-title="Facebook" class="social_facebook"></a></li>
-                    <li><a href="#" data-original-title="Twitter" class="social_twitter"></a></li>
-                    <li><a href="#" data-original-title="Goole Plus" class="social_googleplus"></a></li>
-                    <li><a href="#" data-original-title="Pinterest" class="social_pintrest"></a></li>
-                    <li><a href="#" data-original-title="Linkedin" class="social_linkedin"></a></li>
-                    <li><a href="#" data-original-title="Vimeo" class="social_vimeo"></a></li>
-                </ul>
 			</div><!--/span4-->
 		</div><!--/row-fluid-->	
 	</div><!--/container-->	
@@ -179,18 +159,16 @@
 	<div class="container">
 		<div class="row-fluid">
 			<div class="span8">						
-	            <p>Copyright &copy; 2014.TCake All rights reserved.</p>
+	            <p>Copyright &copy; 2015.JB361.cn All rights reserved.小豆芽版权所有 <span><a href="http://gdcainfo.miitbeian.gov.cn/state/outPortal/loginPortal.action#" target="_blank">ICP证：粤ICP备15050511号</a></span></p>
 			</div>
 			<div class="span4">	
-                <a href="index.html"><img id="logo-footer" src="{% static 'schools/assets/img/logo2-default.png' %}" class="pull-right" alt="" /></a>
+                <a href="/"><img id="logo-footer" src="{% static 'schools/assets/img/logo2-default.png' %}" class="pull-right" alt="" /></a>
 			</div>
 		</div><!--/row-fluid-->
 	</div><!--/container-->	
 </div><!--/copyright-->	
 <!--=== End Copyright ===-->
 
-{% dajaxice_js_import 'nocsrf' %}
-<script type="text/javascript" src="{% static '/static/dajax/jquery.dajax.core.js' %}"></script>
 {% block load_js_script %}
 	<!-- JS Global Compulsory -->           
 	<script type="text/javascript" src="{% static 'schools/assets/js/jquery-1.8.2.min.js'%} "></script>
@@ -214,6 +192,8 @@
     	});
 	</script>
 {% endblock %}
+{% dajaxice_js_import 'nocsrf' %}
+<script type="text/javascript" src="{% static '/static/dajax/jquery.dajax.core.js' %}"></script>
 
 <!--[if lt IE 9]>
     <script src="{% static 'schools/assets/js/respond.js' %}"></script>

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load staticfiles %}
+{% load dajaxice_templatetags %}
 {% block link %}
 	<!-- CSS Global Compulsory-->
     <link rel="stylesheet" href="{% static 'schools/assets/plugins/bootstrap/css/bootstrap.min.css' %}" />
@@ -17,39 +18,29 @@
 {% endblock %}
 
 {% block content %}
-<!--=== Content Part ===-->
 <!--=== Breadcrumbs ===-->
 <div class="breadcrumbs margin-bottom-40">
 	<div class="container">
         <h1 class="color-green pull-left">{{ q_school.name }}</h1>
-        <ul class="pull-right breadcrumb">
-            <li><a href="/">首页</a> <span class="divider">/</span></li>
-            <li class="active">学校:{{ q_school.name }}</li>
-            <input name="school" type="hidden" id="school" value="{{ q_school.id }}" />
-        </ul>
     </div><!--/container-->
 </div><!--/breadcrumbs-->
 <!--=== End Breadcrumbs ===-->
-
 <!--=== Content Part ===-->
 <div class="container"> 	
 	<div class="row-fluid"> 
         <div id="w">    
             <div class="sort" id="sort">
 				<ul class="unstyled inline">
-                	<li><a href="#" class="all {% ifequal q_major '' %} selected {% endifequal %}" value="-1">所有专业</a></li>
-                	{% for major in q_school.major.all %}
-                		<li><a href="#" class="major_{{ major.id }} {% ifequal major.id q_major.id %} selected {% endifequal %}" value="{{ major.id }}">{{ major.name }}</a></li>
-                	{% endfor %}
+                	<li>搜索 "{{ q_search }}",共{{ total_counter }}条结果</li>
                 </ul>
             </div>
         </div>                
     </div><!--/row-fluid-->    
-    
+    <hr />
     <div class="row-fluid blog-page">    
         <!-- Left Sidebar -->
     	<div class="span9" id="show_articles">
-    		{% include "list_article_intro.html" %}
+    		{% include "list_search_result.html" %}
         </div><!--/span9-->
     </div><!--/row-fluid-->    
 </div><!--/container-->	 	
@@ -67,6 +58,7 @@
 	<script type="text/javascript" src="{% static 'schools/assets/plugins/back-to-top.js' %}"></script>
 	<!-- JS Page Level -->           
 	<script type="text/javascript" src="{% static 'schools/assets/js/app.js' %}"></script>
+	{% dajaxice_js_import 'nocsrf' %}
 	<script type="text/javascript">
     	jQuery(document).ready(function() {
         	App.init();
